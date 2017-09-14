@@ -17,6 +17,7 @@ class Worker {
     this.password = options.password;
     this.beforeMiddleware = options.beforeMiddleware;
     this.afterMiddleware = options.afterMiddleware;
+    this.onVisit = options.onVisit;
 
     if (!this.httpServer) {
       this.httpServer = new ExpressHTTPServer({
@@ -73,7 +74,8 @@ class Worker {
     });
 
     return fastbootMiddleware({
-      fastboot: this.fastboot
+      fastboot: this.fastboot,
+      onVisit: this.onVisit
     });
   }
 
